@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
-import MDXContent from "@/componets/MDXconten";
+import MDXContent from "@/components/MDXContent";
 import { notFound } from "next/navigation";
 
 const POSTS_DIR = path.join(process.cwd(), "contents", "posts");

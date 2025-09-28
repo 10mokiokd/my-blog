@@ -2,10 +2,17 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold">Hello Blog 🚀</h1>
-      <p className="mt-3">最初のページが動いてます。</p>
-      <div className="mt-6 rounded-lg border p-4">Tailwindも効いてる？</div>
-    </main>
+    <article className="prose prose-lg mx-auto">
+      <h1>Tailwind Typography 導入テスト</h1>
+      <p>
+        これはテスト用の段落です。Typographyプラグインを導入すると、
+        段落や見出し、リスト、リンクが自動的に読みやすく整形されます。
+      </p>
+      <ul>
+        <li>リスト1</li>
+        <li>リスト2</li>
+      </ul>
+      <a href="#">リンクの見え方</a>
+    </article>
   );
 }
