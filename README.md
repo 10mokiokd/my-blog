@@ -33,28 +33,31 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## 作業の始め方
 1.	クローンする
+```bash
 cd ~/Development/Github
-git clone https://github.com/<ユーザー名>/<リポジトリ名>.git
-cd <リポジトリ名>
+git clone https://github.com/10mokiokd/my-blog.git
+cd my-blog
 npm install
+```
 
 2.	VSCodeで開く
-
+```bash
 code .
-
-•	code . は「このディレクトリをVSCodeで開く」コマンド
-•	まだ使えなければ、VSCodeで Command Palette → “Shell Command: Install ‘code’ command in PATH” を実行して有効化できる
+```
+- code . は「このディレクトリをVSCodeで開く」コマンド
+- まだ使えなければ、VSCodeで Command Palette → “Shell Command: Install ‘code’ command in PATH” を実行して有効化できる
 
 3.	開発サーバーを起動
-
+```bash
 npm run dev
+```
 → http://localhost:3000 で動作確認しながら編集できる
 
-💡 よく使うパターン
-	•	毎回の開始手順（チートシート）
-cd ~/Development/Github/myblog
+### よく使うパターン
+- 毎回の開始手順（チートシート）
+```bash
+cd ~/Development/Github
 git pull --rebase
 code .
 npm run dev
-
-•	編集はVSCodeで、動作確認はブラウザ（+ターミナルでログ確認）
+```
