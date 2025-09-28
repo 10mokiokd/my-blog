@@ -1,29 +1,34 @@
-import Image from "next/image";
+// app/blog/page.tsx
 import Link from "next/link";
+import { getAllPostsMeta } from "@/lib/mdx";
 
-export default function Home() {
+export const metadata = {
+  title: "Blog",
+  description: "最新記事一覧",
+};
+
+export default function BlogIndex() {
+  const posts = getAllPostsMeta();
+
   return (
-    <article className="prose prose-lg mx-auto p-6 border-4 border-dashed">
-      <h1>Tailwind Typography 導入テスト</h1>
-      <p>
-        これはテスト用の段落です。Typographyプラグインを導入すると、
-        段落や見出し、リスト、リンクが自動的に読みやすく整形されます。
-      </p>
-      <ul>
-        <li>リスト1</li>
-        <li>リスト2</li>
+    <main className="mx-auto max-w-3xl px-4 py-10">
+      <h1 className="mb-6 text-3xl font-bold">Blog</h1>
+      <ul className="space-y-6">
+        {posts.map(({ slug, frontmatter, excerpt }) => (
+          <li key={slug} className="border-b pb-6">
+            <Link href={`/blog/${slug}`} className="text-2xl font-semibold">
+              {frontmatter.title ?? slug}
+            </Link>
+            <div className="mt-1 text-sm text-gray-500">
+              <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+              {frontmatter.tags?.length ? (
+                <span> ・ {frontmatter.tags.join(", ")}</span>
+              ) : null}
+            </div>
+            {excerpt && <p className="mt-2 text-gray-700">{excerpt}</p>}
+          </li>
+        ))}
       </ul>
-      <a href="#">リンクの見え方</a>
-      <p>
-        <code>inline code</code> の背景や余白が付けば Typography の効果が出ています。
-      </p>
-
-      {/* 記事一覧ページへのリンク */}
-      <p>
-        <Link href="/blog" className="text-blue-600 underline">
-          記事一覧を見る
-        </Link>
-      </p>
-    </article>
+    </main>
   );
 }

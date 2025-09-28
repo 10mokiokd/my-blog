@@ -1,41 +1,44 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import matter from "gray-matter";
-import MDXContent from "@/components/MDXContent";
 import { notFound } from "next/navigation";
-import { Prose } from "@/components/Prose";
-
-const POSTS_DIR = path.join(process.cwd(), "contents", "posts");
-
-async function getAllSlugs() {
-  const files = await fs.readdir(POSTS_DIR);
-  return files.filter(f => f.endsWith(".mdx")).map(f => f.replace(/\.mdx$/, ""));
-}
+import ArticleLayout from "@/components/ArticleLayout";
+import { compilePost, getAllPostSlugs, getPostSource } from "@/lib/mdx";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return getAllPostSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  try {
+    const { data } = getPostSource(params.slug);
+    const description =
+      typeof data.description === "string"
+        ? data.description
+        : typeof data.summary === "string"
+        ? data.summary
+        : undefined;
+    return {
+      title: data.title,
+      description,
+    };
+  } catch {
+    return {};
+  }
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const filePath = path.join(POSTS_DIR, `${params.slug}.mdx`);
   try {
-    const raw = await fs.readFile(filePath, "utf8");
-    const { content, data } = matter(raw);
+    const post = await compilePost(params.slug);
+
     return (
-      <main className="prose prose-zinc max-w-3xl px-6 py-10">
-        <Prose>
-          <h1>{data.title ?? params.slug}</h1>
-          {data.date && (
-            <p className="text-sm opacity-70">
-              {new Date(data.date).toLocaleDateString()}
-            </p>
-          )}
-          <MDXContent source={content} />
-        </Prose>
-      </main>
+      <ArticleLayout frontmatter={post.frontmatter}>
+        {post.mdxContent}
+      </ArticleLayout>
     );
-  } catch {
+  } catch (error) {
     notFound();
   }
 }

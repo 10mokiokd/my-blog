@@ -60,3 +60,6 @@ git pull --rebase
 code .
 npm run dev
 ```
+### 新規記事を作るときのコマンド：
+```bash
+cp posts/_template.mdx "posts/2025-10-01-my-first-post.mdx"
