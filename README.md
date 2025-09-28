@@ -23,7 +23,6 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 # Blog Site
 
 > Live (Vercel): **[https://my-blog-beta-ebon-77.vercel.app/](https://my-blog-beta-ebon-77.vercel.app/)**  
-> Replace `<your-vercel-app>` with your actual Vercel project URL.
 
 ## Deployment
 - Hosted on **Vercel**. Every push to `main` triggers an auto-deploy.
