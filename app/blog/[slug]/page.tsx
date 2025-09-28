@@ -14,6 +14,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   try {
     const { data } = getPostSource(params.slug);
+    if (data?.draft) {
+      throw new Error("Draft posts are not publicly accessible");
+    }
     const description =
       typeof data.description === "string"
         ? data.description

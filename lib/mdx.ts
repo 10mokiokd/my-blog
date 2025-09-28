@@ -55,7 +55,11 @@ export function getAllPostSlugs() {
     return fs
         .readdirSync(POSTS_DIR)
         .filter((f) => f.endsWith(".mdx") && !f.startsWith("_"))
-        .map((f) => f.replace(/\.mdx$/, ""));
+        .map((f) => f.replace(/\.mdx$/, ""))
+        .filter((slug) => {
+            const { data } = getPostSource(slug);
+            return !data?.draft;
+        });
 }
 
 export function getPostSource(slug: string) {
@@ -68,6 +72,10 @@ export async function compilePost(slug: string) {
     const { content, data } = getPostSource(slug);
 
     // Frontmatterの最低限バリデーション
+    if (data.draft) {
+        throw new Error(`Draft post ${slug} is not accessible`);
+    }
+
     if (!data.title || !data.date) {
         throw new Error(`Frontmatter missing in ${slug}.mdx`);
     }
