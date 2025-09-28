@@ -28,6 +28,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tomoki Okada's Blog",
   description: "Training for Next.js",
+  openGraph: {
+    title: "Tomoki Okada's Blog",
+    description: "Training for Next.js",
+    url: "https://my-blog.com",
+    siteName: "Tomoki Okada's Blog",
+    images: [
+      {
+        url: "/og-image.png", // シェア時に表示される画像
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "ja_JP",
+    type: "website",
+  }
 };
 
 export default function RootLayout({
