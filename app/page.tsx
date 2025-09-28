@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,6 +16,13 @@ export default function Home() {
       <a href="#">リンクの見え方</a>
       <p>
         <code>inline code</code> の背景や余白が付けば Typography の効果が出ています。
+      </p>
+
+      {/* 記事一覧ページへのリンク */}
+      <p>
+        <Link href="/blog" className="text-blue-600 underline">
+          記事一覧を見る
+        </Link>
       </p>
     </article>
   );

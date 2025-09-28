@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Noto_Sans_JP } from 'next/font/google'
+import Link from "next/link";
+
 
 const notoSansJp = Noto_Sans_JP({
   subsets: ['latin'], // 日本語の場合 'latin' でOK
@@ -33,7 +35,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={notoSansJp.className}>
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        {/* Header */}
+        <header className="bg-gray-800 text-white p-4">
+          <nav className="container mx-auto flex justify-between">
+            <Link href="/" className="font-bold text-lg">
+              My Blog
+            </Link>
+            <div className="space-x-4">
+              <Link href="/">Home</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/about">About</Link>
+            </div>
+          </nav>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 container mx-auto p-6">{children}</main>
+
+        {/* Footer */}
+        <footer className="bg-gray-100 text-center p-4 text-sm text-gray-600">
+          © {new Date().getFullYear()} My Blog. All rights reserved.
+        </footer>
+      </body>
     </html>
   );
 }
