@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import MDXContent from "@/components/MDXContent";
 import { notFound } from "next/navigation";
+import { Prose } from "@/components/Prose";
 
 const POSTS_DIR = path.join(process.cwd(), "contents", "posts");
 
@@ -22,14 +23,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const raw = await fs.readFile(filePath, "utf8");
     const { content, data } = matter(raw);
     return (
-      <main className="prose prose-zinc max-w-3xl px-6 py-10">
-        <h1>{data.title ?? params.slug}</h1>
-        {data.date && (
-          <p className="text-sm opacity-70">
-            {new Date(data.date).toLocaleDateString()}
-          </p>
-        )}
-        <MDXContent source={content} />
+      <main className="px-6 py-10">
+        <Prose>
+          <h1>{data.title ?? params.slug}</h1>
+          {data.date && (
+            <p className="mt-2 text-sm text-zinc-500">
+              <time dateTime={data.date}>
+                {new Date(data.date).toLocaleDateString()}
+              </time>
+            </p>
+          )}
+          <MDXContent source={content} />
+        </Prose>
       </main>
     );
   } catch {
