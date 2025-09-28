@@ -8,7 +8,11 @@ export default {
     './contents/**/*.{md,mdx,js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-noto-sans-jp)', 'sans-serif'],
+      },
+    },
   },
   plugins: [typography],
 } satisfies Config
