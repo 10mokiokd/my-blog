@@ -34,7 +34,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## 作業の始め方
 1.	クローンする
 ```bash
-cd ~/Development/Github
+cd ~/Development/Github/my-blog
 git clone https://github.com/10mokiokd/my-blog.git
 cd my-blog
 npm install
@@ -56,7 +56,7 @@ npm run dev
 ### よく使うパターン
 - 毎回の開始手順（チートシート）
 ```bash
-cd ~/Development/Github
+cd ~/Development/Github/my-blog
 git pull --rebase
 code .
 npm run dev
