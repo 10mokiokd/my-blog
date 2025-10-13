@@ -26,13 +26,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tomoki Okada's Blog",
+  title: "Monoscape",
   description: "Training for Next.js",
   openGraph: {
-    title: "Tomoki Okada's Blog",
+    title: "Monoscape",
     description: "Training for Next.js",
     url: "https://my-blog.com",
-    siteName: "Tomoki Okada's Blog",
+    siteName: "Monoscape",
     images: [
       {
         url: "/og-image.png", // シェア時に表示される画像

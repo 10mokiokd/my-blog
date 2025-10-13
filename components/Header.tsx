@@ -5,7 +5,7 @@ export default function Header() {
     <header className="bg-gray-800 text-white p-4">
       <nav className="container mx-auto flex justify-between">
         <Link href="/" className="font-bold text-lg">
-          My Blog
+          Monoscape
         </Link>
         <div className="space-x-4">
           <Link href="/">Home</Link>
