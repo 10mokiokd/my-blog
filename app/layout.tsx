@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-
-import { Noto_Sans_JP } from 'next/font/google'
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 
 const notoSansJp = Noto_Sans_JP({
-  subsets: ['latin'], // 日本語の場合 'latin' でOK
-  variable: '--font-noto-sans-jp',
-  weight: ['400', '500', '700'], // 必要な太さを指定
-  display: 'swap',
-})
+  subsets: ["latin"], // 日本語の場合 'latin' でOK
+  variable: "--font-noto-sans-jp",
+  weight: ["400", "500", "700"], // 必要な太さを指定
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
