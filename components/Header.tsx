@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 export default function Header() {
   return (
     <header className="bg-gray-800 text-white p-4">
-      <nav className="container mx-auto flex justify-between">
+      <nav className="container mx-auto flex items-center justify-between">
         <Logo className="text-white hover:text-gray-200 transition-colors" />
         <div className="space-x-4">
           <Link href="/">Home</Link>
