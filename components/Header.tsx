@@ -6,11 +6,26 @@ export default function Header() {
   return (
     <header className="bg-[#0D0D0D] text-white p-4">
       <nav className="container mx-auto flex items-center justify-between">
-        <Logo className="text-white hover:text-gray-200 transition-colors" />
+        <Logo className="text-white" />
         <div className="space-x-4">
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
-          <Link href="/about">About</Link>
+          <Link
+            href="/"
+            className="text-white transition-colors duration-200 hover:text-gray-300"
+          >
+            Home
+          </Link>
+          <Link
+            href="/blog"
+            className="text-white transition-colors duration-200 hover:text-gray-300"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/about"
+            className="text-white transition-colors duration-200 hover:text-gray-300"
+          >
+            About
+          </Link>
         </div>
       </nav>
     </header>

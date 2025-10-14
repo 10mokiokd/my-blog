@@ -18,11 +18,15 @@ export default function Logo({
   className = "",
   title = "MonoScape",
 }: LogoProps) {
-  const baseClassName = `${playfairDisplay.className} text-2xl tracking-wide`;
+  const baseClassName = `${playfairDisplay.className} logo group inline-flex text-2xl tracking-wide`;
   const logoClassName = className
     ? `${baseClassName} ${className}`
     : baseClassName;
   const accentColorClassName = "text-[#E60026]";
+  const primaryHoverClass =
+    "transition-colors duration-200 group-hover:text-[#E5E5E5]";
+  const accentHoverClass =
+    "transition-colors duration-200 group-hover:text-[#CC0022]";
 
   const accentIndex = title.toLowerCase().indexOf("scape");
   const primaryText =
@@ -33,12 +37,18 @@ export default function Logo({
 
   const logoTextContent = (
     <>
-      <span className="text-white">{primaryText}</span>
+      <span className={`text-white ${primaryHoverClass}`}>{primaryText}</span>
       {accentText ? (
         <>
-          <span className={accentColorClassName}>{accentFirstChar}</span>
+          <span
+            className={`${accentColorClassName} ${accentHoverClass}`}
+          >
+            {accentFirstChar}
+          </span>
           {accentRemainder ? (
-            <span className="text-white">{accentRemainder}</span>
+            <span className={`text-white ${primaryHoverClass}`}>
+              {accentRemainder}
+            </span>
           ) : null}
         </>
       ) : null}
