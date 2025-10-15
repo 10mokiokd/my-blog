@@ -2,6 +2,7 @@
 // 必須
 title: "ここに記事タイトル"
 description: "SEO/一覧に出す要約（120字目安）"
+summary: "description 代わりのリード文（任意）"
 date: "2025-09-29"      // 初回公開日 (YYYY-MM-DD)
 updated: "2025-09-29"   // 更新日（任意）
 tags: ["Next.js", "MDX"] // 任意。配列で
@@ -21,3 +22,13 @@ draft: true              // true なら一覧に出さない
 ```ts
 // コードサンプル
 console.log("hello");
+
+# Balloon コンポーネント使用例
+
+<Balloon name="Tomoki" icon="/images/tomoki.jpg">
+  はじめまして！Tomokiです。
+</Balloon>
+
+<Balloon side="right">
+  右側に寄せる場合は `side="right"` を指定します。
+</Balloon>
