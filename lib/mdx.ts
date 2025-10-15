@@ -6,6 +6,7 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { mdxComponents } from "@/components/mdx-components";
 
 export type PostFrontmatter = {
     title: string;
@@ -82,6 +83,7 @@ export async function compilePost(slug: string) {
 
     const mdx = await compileMDX<PostFrontmatter>({
         source: content,
+        components: mdxComponents,
         options: {
             parseFrontmatter: false, // gray-matterで取得済み
             mdxOptions: {
