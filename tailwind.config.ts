@@ -17,8 +17,12 @@ const config: Config = {
             h1: {
               fontWeight: "700",
               letterSpacing: "-0.02em",
-              lineHeight: "1.15",
-              marginBottom: "0.6em",
+              lineHeight: "1.1",
+              marginTop: "4rem",
+              marginBottom: "2rem",
+              fontSize: "2.5rem",
+              paddingBottom: "1rem",
+              borderBottom: `1px solid ${theme("colors.slate.200")}`,
             },
             h2: {
               fontWeight: "700",
@@ -55,7 +59,16 @@ const config: Config = {
         // 画面が広いときの“読み物用”拡張
         lg: {
           css: {
-            h1: { fontSize: "2.25rem" }, // ~text-3xl
+            h1: {
+              fontSize: "2.5rem", // ~text-4xl
+              lineHeight: "1.1",
+              marginTop: "4rem",
+              marginBottom: "2rem",
+              fontWeight: "700",
+              letterSpacing: "-0.02em",
+              paddingBottom: "1.25rem",
+              borderBottom: `1px solid ${theme("colors.slate.300")}`,
+            },
             h2: { fontSize: "1.875rem" }, // ~text-2xl
             h3: { fontSize: "1.5rem" },   // ~text-xl
             p: { lineHeight: "1.9" },
