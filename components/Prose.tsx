@@ -10,7 +10,7 @@ export function Prose({ children, className = "" }: { children: ReactNode; class
                 "prose-base md:prose-lg",
                 // 見出し
                 "prose-headings:font-bold prose-headings:tracking-tight",
-                "prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:leading-tight",
+                "prose-h1:text-3xl prose-h1:leading-tight",
                 "prose-h2:text-2xl md:prose-h2:text-3xl",
                 "prose-h3:text-xl md:prose-h3:text-2xl",
                 // 本文

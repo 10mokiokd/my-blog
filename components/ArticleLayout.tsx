@@ -8,8 +8,7 @@ type Props = {
 };
 
 export default function ArticleLayout({ frontmatter, children }: Props) {
-    const { title, description, summary, date, updated, tags, thumbnail } = frontmatter;
-    const lead = description ?? summary;
+    const { title, date, updated, tags, thumbnail } = frontmatter;
 
     return (
         <article className="prose mx-auto max-w-3xl">
@@ -24,8 +23,7 @@ export default function ArticleLayout({ frontmatter, children }: Props) {
                     </ul>
                 ) : null}
 
-                <h1 className="mb-2 text-3xl font-bold">{title}</h1>
-                {lead && <p className="text-gray-600">{lead}</p>}
+                <h1 className="text-3xl font-bold leading-tight mt-4 mb-6">{title}</h1>
 
                 <div className="mt-2 text-sm text-gray-500">
                     <time dateTime={date}>公開: {date}</time>

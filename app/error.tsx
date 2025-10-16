@@ -10,7 +10,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     <div className="flex flex-col items-center justify-center h-[70vh] text-center">
-      <h1 className="text-4xl font-bold mb-4">500 - サーバーエラー</h1>
+      <h1 className="text-3xl font-bold mb-4">500 - サーバーエラー</h1>
       <p className="mb-6">予期せぬエラーが発生しました。</p>
       <button
         onClick={() => reset()}
