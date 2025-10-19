@@ -27,7 +27,7 @@ export default function Balloon({
     return (
         <div
             className={clsx(
-                "my-4 flex items-start gap-3",
+                "my-6 flex items-start gap-3",
                 isLeft ? "flex-row" : "flex-row-reverse"
             )}
         >

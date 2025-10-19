@@ -16,7 +16,7 @@ const H3 = ({ className, ...props }: ComponentPropsWithoutRef<"h2">) => (
     <h3
         {...props}
         className={clsx(
-            "border-l-4 border-[#F05A6B] px-4 py-3 text-lg font-bold text-[#3D3D3D] mt-4 mb-4",
+            "border-l-4 border-[#F05A6B] px-2 py-2 text-lg font-bold text-[#3D3D3D] mt-4 mb-4",
             className,
         )}
     />
