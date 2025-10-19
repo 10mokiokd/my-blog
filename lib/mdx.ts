@@ -29,6 +29,12 @@ export type Post = {
     content: string; // raw MDX（必要なら）
 };
 
+export type PageMeta = {
+    slug: string;
+    frontmatter: ArticleFrontmatter;
+    filePath: string;
+};
+
 const POSTS_DIR = path.join(process.cwd(), "contents", "posts");
 const PAGES_DIR = path.join(process.cwd(), "contents", "pages");
 const EXCERPT_LENGTH = 140;
@@ -76,10 +82,31 @@ export function getPostSource(slug: string) {
     return matter(file); // { content, data }
 }
 
+export function getAllPageSlugs() {
+    if (!fs.existsSync(PAGES_DIR)) return [];
+    return fs
+        .readdirSync(PAGES_DIR)
+        .filter((f) => f.endsWith(".mdx") && !f.startsWith("_"))
+        .map((f) => f.replace(/\.mdx$/, ""));
+}
+
 export function getPageSource(slug: string) {
     const fullPath = path.join(PAGES_DIR, `${slug}.mdx`);
     const file = fs.readFileSync(fullPath, "utf-8");
     return matter(file);
+}
+
+export function getAllPagesMeta(): PageMeta[] {
+    const slugs = getAllPageSlugs();
+    return slugs.map((slug) => {
+        const fullPath = path.join(PAGES_DIR, `${slug}.mdx`);
+        const { data } = getPageSource(slug);
+        return {
+            slug,
+            frontmatter: data as ArticleFrontmatter,
+            filePath: fullPath,
+        };
+    });
 }
 
 export async function compilePost(slug: string) {
