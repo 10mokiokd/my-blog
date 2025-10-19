@@ -53,17 +53,22 @@ export default function HomePage() {
               <li key={slug} className="border-b pb-6 last:border-b-0">
                 <Link
                   href={`/blog/${slug}`}
-                  className="text-2xl font-semibold transition-colors duration-200 hover:text-teal-600"
+                  className="group block rounded-lg p-4 transition-colors duration-500 hover:bg-[#F4F4F4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                 >
-                  {frontmatter.title ?? slug}
+                  <h3 className="text-2xl font-semibold transition-colors duration-500">
+                    {frontmatter.title ?? slug}
+                  </h3>
+                  <div className="mt-1 text-sm text-gray-500">
+                    <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+                    {frontmatter.tags?.length ? (
+                      <span> ・ {frontmatter.tags.join(", ")}</span>
+                    ) : null}
+                  </div>
+                  {excerpt && <p className="mt-2 text-gray-700">{excerpt}</p>}
+                  <span className="mt-3 inline-flex items-center text-sm font-semibold text-gray-600 transition-colors duration-500 group-hover:underline">
+                    続きを読む
+                  </span>
                 </Link>
-                <div className="mt-1 text-sm text-gray-500">
-                  <time dateTime={frontmatter.date}>{frontmatter.date}</time>
-                  {frontmatter.tags?.length ? (
-                    <span> ・ {frontmatter.tags.join(", ")}</span>
-                  ) : null}
-                </div>
-                {excerpt && <p className="mt-2 text-gray-700">{excerpt}</p>}
               </li>
             ))}
           </ul>
