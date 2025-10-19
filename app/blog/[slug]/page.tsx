@@ -23,10 +23,26 @@ export async function generateMetadata({
         : typeof data.summary === "string"
         ? data.summary
         : undefined;
-    return {
+    const metadata: Metadata = {
       title: data.title,
       description,
     };
+    if (typeof data.thumbnail === "string" && data.thumbnail.trim().length > 0) {
+      metadata.openGraph = {
+        images: [
+          {
+            url: data.thumbnail,
+            width: 1200,
+            height: 630,
+          },
+        ],
+      };
+      metadata.twitter = {
+        card: "summary_large_image",
+        images: [data.thumbnail],
+      };
+    }
+    return metadata;
   } catch {
     return {};
   }

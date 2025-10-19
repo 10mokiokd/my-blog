@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Monoscape",
     images: [
       {
-        url: "/og-image.png", // シェア時に表示される画像
+        url: "/ogp-default.png",
         width: 1200,
         height: 630,
       },
