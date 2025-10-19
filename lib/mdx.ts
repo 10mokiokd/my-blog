@@ -34,6 +34,8 @@ function stripMarkdown(value: string) {
         .replace(/`[^`]*`/g, "")
         .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
         .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&[a-z#0-9]+;/gi, " ")
         .replace(/[#>*_~\-]/g, "")
         .replace(/\s+/g, " ")
         .trim();

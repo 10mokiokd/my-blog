@@ -15,12 +15,6 @@ export default function Header() {
             Home
           </Link>
           <Link
-            href="/blog"
-            className="text-white transition-colors duration-200 hover:text-gray-300"
-          >
-            Blog
-          </Link>
-          <Link
             href="/about"
             className="text-white transition-colors duration-200 hover:text-gray-300"
           >
