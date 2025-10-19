@@ -1,4 +1,5 @@
 // components/Balloon.tsx
+import Image from "next/image";
 import clsx from "clsx";
 
 type Props = {
@@ -32,10 +33,11 @@ export default function Balloon({
             )}
         >
             {icon ? (
-                // 画像はそのまま <img> でOK（最小実装）
-                <img
+                <Image
                     src={icon}
                     alt={name ?? "avatar"}
+                    width={40}
+                    height={40}
                     className="size-10 rounded-full object-cover"
                 />
             ) : (

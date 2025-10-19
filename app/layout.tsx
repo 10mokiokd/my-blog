@@ -54,7 +54,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={notoSansJp.className}>
+    <html
+      lang="ja"
+      className={`${notoSansJp.className} ${geistSans.variable} ${geistMono.variable}`}
+    >
       <body className="min-h-screen flex flex-col">
         <Header />
 

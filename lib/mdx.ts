@@ -8,15 +8,19 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { mdxComponents } from "@/components/mdx-components";
 
-export type PostFrontmatter = {
+export type ArticleFrontmatter = {
     title: string;
     description?: string;
     summary?: string;
-    date: string;          // YYYY-MM-DD
+    date?: string;          // YYYY-MM-DD
     updated?: string;
     tags?: string[];
     thumbnail?: string;
     draft?: boolean;
+};
+
+export type PostFrontmatter = ArticleFrontmatter & {
+    date: string;
 };
 
 export type Post = {
@@ -26,6 +30,7 @@ export type Post = {
 };
 
 const POSTS_DIR = path.join(process.cwd(), "contents", "posts");
+const PAGES_DIR = path.join(process.cwd(), "contents", "pages");
 const EXCERPT_LENGTH = 140;
 
 function stripMarkdown(value: string) {
@@ -71,6 +76,12 @@ export function getPostSource(slug: string) {
     return matter(file); // { content, data }
 }
 
+export function getPageSource(slug: string) {
+    const fullPath = path.join(PAGES_DIR, `${slug}.mdx`);
+    const file = fs.readFileSync(fullPath, "utf-8");
+    return matter(file);
+}
+
 export async function compilePost(slug: string) {
     const { content, data } = getPostSource(slug);
 
@@ -102,6 +113,35 @@ export async function compilePost(slug: string) {
         slug,
         frontmatter: data as PostFrontmatter,
         // mdx.content は ReactNode（RSCコンポーネント）として利用
+        mdxContent: mdx.content,
+    };
+}
+
+export async function compilePage(slug: string) {
+    const { content, data } = getPageSource(slug);
+
+    if (!data.title) {
+        throw new Error(`Frontmatter missing in pages/${slug}.mdx`);
+    }
+
+    const mdx = await compileMDX<ArticleFrontmatter>({
+        source: content,
+        components: mdxComponents,
+        options: {
+            parseFrontmatter: false,
+            mdxOptions: {
+                remarkPlugins: [remarkGfm],
+                rehypePlugins: [
+                    rehypeSlug,
+                    [rehypeAutolinkHeadings, { behavior: "wrap" }],
+                ],
+            },
+        },
+    });
+
+    return {
+        slug,
+        frontmatter: data as ArticleFrontmatter,
         mdxContent: mdx.content,
     };
 }

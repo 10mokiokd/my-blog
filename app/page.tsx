@@ -30,7 +30,7 @@ export default function HomePage() {
             最新の記事を読む
           </Link>
           <Link
-            href="/about"
+            href="/profile"
             className="rounded-md border border-black px-4 py-2 text-sm font-semibold text-black transition-colors duration-200 hover:bg-black hover:text-white"
           >
             プロフィールを見る

@@ -15,10 +15,10 @@ export default function Header() {
             Home
           </Link>
           <Link
-            href="/about"
+            href="/profile"
             className="text-white transition-colors duration-200 hover:text-gray-300"
           >
-            About
+            Profile
           </Link>
         </div>
       </nav>

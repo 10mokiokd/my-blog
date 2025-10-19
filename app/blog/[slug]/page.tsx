@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         {post.mdxContent}
       </ArticleLayout>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }
