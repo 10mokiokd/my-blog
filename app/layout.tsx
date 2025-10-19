@@ -26,6 +26,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Monoscape",
   description: "Training for Next.js",
+  icons: {
+    icon: "/fabicon.png",
+    shortcut: "/fabicon.png",
+    apple: "/fabicon.png",
+  },
   openGraph: {
     title: "Monoscape",
     description: "Training for Next.js",
