@@ -49,7 +49,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     const timestamps = [...pageEntries, ...postEntries]
-        .map((entry) => entry.lastModified?.getTime())
+        .map((entry) =>
+            entry.lastModified
+                ? new Date(entry.lastModified).getTime()
+                : undefined,
+        )
         .filter(
             (value): value is number =>
                 typeof value === "number" && !Number.isNaN(value),
