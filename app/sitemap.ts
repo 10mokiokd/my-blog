@@ -48,15 +48,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ),
     }));
 
-    const latestTimestamp = [...pageEntries, ...postEntries].reduce(
-        (acc, entry) => Math.max(acc, entry.lastModified.getTime()),
-        0,
-    );
+    const timestamps = [...pageEntries, ...postEntries]
+        .map((entry) => entry.lastModified?.getTime())
+        .filter(
+            (value): value is number =>
+                typeof value === "number" && !Number.isNaN(value),
+        );
+
+    const latestTimestamp = timestamps.length
+        ? Math.max(...timestamps)
+        : undefined;
 
     const staticEntries: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
-            lastModified: latestTimestamp ? new Date(latestTimestamp) : new Date(),
+            lastModified: latestTimestamp
+                ? new Date(latestTimestamp)
+                : new Date(),
         },
     ];
 
