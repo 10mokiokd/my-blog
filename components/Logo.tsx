@@ -7,26 +7,45 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
+type LogoVariant = "dark" | "light" | "auto";
+
 type LogoProps = {
   href?: string;
   className?: string;
   title?: string;
+  variant?: LogoVariant;
 };
 
 export default function Logo({
   href = "/",
   className = "",
   title = "MonoScape",
+  variant = "dark",
 }: LogoProps) {
   const baseClassName = `${playfairDisplay.className} logo group inline-flex text-2xl tracking-wide`;
   const logoClassName = className
     ? `${baseClassName} ${className}`
     : baseClassName;
-  const accentColorClassName = "text-[#E60026]";
+  const primaryBaseColorClass =
+    variant === "dark"
+      ? "text-white"
+      : variant === "light"
+        ? "text-black"
+        : "text-black dark:text-white";
   const primaryHoverClass =
-    "transition-colors duration-200 group-hover:text-[#E5E5E5]";
+    variant === "dark"
+      ? "group-hover:text-[#E5E5E5]"
+      : variant === "light"
+        ? "group-hover:text-[#333333]"
+        : "group-hover:text-[#333333] dark:group-hover:text-[#E5E5E5]";
+  const accentColorClassName = "text-[#E60026]";
   const accentHoverClass =
-    "transition-colors duration-200 group-hover:text-[#CC0022]";
+    variant === "dark"
+      ? "group-hover:text-[#CC0022]"
+      : variant === "light"
+        ? "group-hover:text-[#B2001C]"
+        : "group-hover:text-[#B2001C] dark:group-hover:text-[#CC0022]";
+  const hoverTransitionClass = "transition-colors duration-200";
 
   const accentIndex = title.toLowerCase().indexOf("scape");
   const primaryText =
@@ -37,16 +56,22 @@ export default function Logo({
 
   const logoTextContent = (
     <>
-      <span className={`text-white ${primaryHoverClass}`}>{primaryText}</span>
+      <span
+        className={`${primaryBaseColorClass} ${hoverTransitionClass} ${primaryHoverClass}`}
+      >
+        {primaryText}
+      </span>
       {accentText ? (
         <>
           <span
-            className={`${accentColorClassName} ${accentHoverClass}`}
+            className={`${accentColorClassName} ${hoverTransitionClass} ${accentHoverClass}`}
           >
             {accentFirstChar}
           </span>
           {accentRemainder ? (
-            <span className={`text-white ${primaryHoverClass}`}>
+            <span
+              className={`${primaryBaseColorClass} ${hoverTransitionClass} ${primaryHoverClass}`}
+            >
               {accentRemainder}
             </span>
           ) : null}
