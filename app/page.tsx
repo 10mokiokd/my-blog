@@ -39,23 +39,24 @@ export default function HomePage() {
       </section>
 
       <section id="posts" className="space-y-6">
-        <header className="space-y-1">
-          <h2 className="text-2xl font-semibold">最新の記事</h2>
-          <p className="text-sm text-gray-500">最近公開したブログ記事の一覧です。</p>
+        <header className="space-y-2">
+          <h2 className="bg-[#FDEBEC] border-l-[5px] border-[#F05A6B] px-4 py-3 text-xl font-bold text-[#3D3D3D]">
+            最新の記事
+          </h2>
         </header>
         {posts.length === 0 ? (
           <p className="text-gray-500">
             まだ記事がありません。公開されるまで少しお待ちください。
           </p>
         ) : (
-          <ul className="space-y-6">
+          <ul className="space-y-4">
             {posts.map(({ slug, frontmatter, excerpt }) => (
               <li key={slug} className="border-b pb-6 last:border-b-0">
                 <Link
                   href={`/blog/${slug}`}
-                  className="group block rounded-lg p-4 transition-colors duration-500 hover:bg-[#F4F4F4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+                  className="group block rounded-lg py-4 pl-0 pr-4 transition-colors duration-200 hover:bg-[#F4F4F4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
                 >
-                  <h3 className="text-2xl font-semibold transition-colors duration-500">
+                  <h3 className="text-lg font-semibold transition-colors duration-200">
                     {frontmatter.title ?? slug}
                   </h3>
                   <div className="mt-1 text-sm text-gray-500">
@@ -65,7 +66,7 @@ export default function HomePage() {
                     ) : null}
                   </div>
                   {excerpt && <p className="mt-2 text-gray-700">{excerpt}</p>}
-                  <span className="mt-3 inline-flex items-center text-sm font-semibold text-gray-600 transition-colors duration-500 group-hover:underline">
+                  <span className="mt-3 inline-flex items-center text-sm font-semibold text-gray-600 transition-colors duration-200 group-hover:underline">
                     続きを読む
                   </span>
                 </Link>
