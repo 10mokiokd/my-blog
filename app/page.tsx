@@ -13,9 +13,6 @@ export default function HomePage() {
   return (
     <main className="mx-auto max-w-3xl space-y-12 px-4 py-12">
       <section className="space-y-4">
-        <p className="text-sm font-medium uppercase tracking-widest text-teal-500">
-          Tomoki Okada
-        </p>
         <h1 className="text-4xl font-bold tracking-tight">
           ソフトウェア開発や日常の学びを発信するブログ
         </h1>
